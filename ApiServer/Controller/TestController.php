@@ -32,7 +32,7 @@ class TestController extends HttpController
 
     /**
      * @Action
-     * @Route(url="./article/show/{id}",method="GET")
+     * @Route(url="./article/show/{id}",method={"GET"},paramsGet="qq=1")
      */
     public function artice($id){
         return ['show'=>$id];
