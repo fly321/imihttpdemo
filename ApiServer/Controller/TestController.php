@@ -82,5 +82,13 @@ class TestController extends HttpController
        ];
     }
 
+    /**
+     * @Action
+     * @View(renderType="html")
+     */
+    public function response_html(){
+        return "hello xiflys";
+    }
+
 
 }
