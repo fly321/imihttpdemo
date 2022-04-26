@@ -64,4 +64,13 @@ class TestController extends HttpController
         return ['name'=>$name,'value'=>$this->request->getCookie($name,111)];
     }
 
+    /**
+     * @Action
+     * ImageUrl http://inews.gtimg.com/newsapp_ls/0/14805646356/0
+     */
+    public function testHeader(){
+        return $this->response->withHeader("hellofly",$this->request->getHeaderLine('xixi'));
+    }
+
+
 }
