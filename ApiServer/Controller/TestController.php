@@ -72,5 +72,15 @@ class TestController extends HttpController
         return $this->response->withHeader("hellofly",$this->request->getHeaderLine('xixi'));
     }
 
+    /**
+     * @Action
+     */
+    public function other(){
+       return [
+           'url'=>$this->request->getUri()->__toString(),
+           'server'=>$this->request->getServerParams()
+       ];
+    }
+
 
 }
