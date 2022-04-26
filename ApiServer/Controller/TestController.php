@@ -38,4 +38,30 @@ class TestController extends HttpController
         return ['show'=>$id];
     }
 
+    /**
+     * @Action
+     */
+    public function getTest(int $id,string $name){
+        return [
+            'id'=>$id,
+            'test'=>$name,
+            '_get'=>$this->request->get('name'),
+            '_post'=>$this->request->post('id',333)
+        ];
+    }
+
+    /**
+     * @Action
+     */
+    public function setCookie($name,$value){
+        return $this->response->withCookie($name,$value);
+    }
+
+    /**
+     * @Action
+     */
+    public function getCookie($name){
+        return ['name'=>$name,'value'=>$this->request->getCookie($name,111)];
+    }
+
 }
