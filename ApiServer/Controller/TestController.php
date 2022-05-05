@@ -9,6 +9,7 @@
 namespace ImiApp\ApiServer\Controller;
 
 use Imi\Server\Http\Controller\HttpController;
+use Imi\Server\Http\Message\UploadedFile;
 use Imi\Server\Http\Route\Annotation\Action;
 use Imi\Server\Http\Route\Annotation\Controller;
 use Imi\Server\Http\Route\Annotation\Route;
@@ -89,6 +90,30 @@ class TestController extends HttpController
     public function response_html(){
         return "hello xiflys";
     }
+
+
+    /**
+     * @Action
+     */
+    public function upload_demo(){
+        $uploadedFiles = $this->request->getUploadedFiles();
+        $arr = [];
+        /**
+         * @var UploadedFile $file
+         */
+        foreach ($uploadedFiles as $file){
+            $arr[] = array(
+                'filename'=>$file->getClientFilename(),
+                'media_type'=>$file->getClientMediaType(),
+                'tmp'=>$file->getTmpFilename(),
+                'size'=>$file->getSize(),
+                'size2'=>strlen($file->getStream()->getContents())
+            );
+        }
+
+        return $arr;
+    }
+
 
 
 }
